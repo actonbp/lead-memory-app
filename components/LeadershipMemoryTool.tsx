@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Brain, AlertCircle, TrendingUp, RefreshCw, FileText, ChevronRight } from 'lucide-react';
+import { Brain, AlertCircle, TrendingUp, RefreshCw, FileText, ChevronRight, Settings, X } from 'lucide-react';
 
 interface AnalysisResult {
   percentage: number;
@@ -22,6 +22,8 @@ const LeadershipMemoryTool = () => {
   const [history, setHistory] = useState<AnalysisResult[]>([]);
   const [error, setError] = useState('');
   const [showFallbackOption, setShowFallbackOption] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [selectedModel, setSelectedModel] = useState('claude-sonnet');
 
   const performRuleBasedAnalysis = () => {
     const item = inputItem.toLowerCase();
@@ -160,8 +162,8 @@ const LeadershipMemoryTool = () => {
     setError('');
     setShowFallbackOption(false);
 
-    // If explicitly using rule-based or as fallback
-    if (useRuleBased) {
+    // If explicitly using rule-based or selected in settings
+    if (useRuleBased || selectedModel === 'rule-based') {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       const result = performRuleBasedAnalysis();
@@ -224,11 +226,20 @@ const LeadershipMemoryTool = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 relative">
           <div className="flex justify-center items-center gap-3 mb-4">
             <Brain className="w-10 h-10 text-indigo-600" />
             <h1 className="text-3xl font-bold text-gray-800">Leadership Item Memory Assessment</h1>
           </div>
+          
+          {/* Settings Button */}
+          <button
+            onClick={() => setShowSettings(true)}
+            className="absolute top-0 right-0 p-2 text-gray-600 hover:text-indigo-600 hover:bg-white rounded-lg transition-all"
+            title="Settings"
+          >
+            <Settings className="w-6 h-6" />
+          </button>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Analyze whether your leadership questionnaire items trigger episodic memory (specific experiences) 
             or semantic memory (general impressions). Get AI-powered suggestions to improve your items.
@@ -244,6 +255,120 @@ const LeadershipMemoryTool = () => {
             </p>
           </div>
         </div>
+
+        {/* Settings Modal */}
+        {showSettings && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
+            <div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 animate-in">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+                  <Settings className="w-5 h-5 text-indigo-600" />
+                  Model Settings
+                </h2>
+                <button
+                  onClick={() => setShowSettings(false)}
+                  className="p-1 hover:bg-gray-100 rounded-lg transition-colors"
+                >
+                  <X className="w-5 h-5 text-gray-500" />
+                </button>
+              </div>
+              
+              <div className="space-y-3">
+                <p className="text-sm text-gray-600 mb-4">Choose your preferred AI model for analysis:</p>
+                
+                {/* Non-AI Option */}
+                <label className="flex items-center p-3 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
+                  <input
+                    type="radio"
+                    name="model"
+                    value="rule-based"
+                    checked={selectedModel === 'rule-based'}
+                    onChange={(e) => setSelectedModel(e.target.value)}
+                    className="mr-3"
+                  />
+                  <div className="flex-1">
+                    <div className="font-semibold text-gray-800">Rule-Based Analysis</div>
+                    <div className="text-xs text-gray-500">No AI, uses linguistic patterns</div>
+                  </div>
+                </label>
+                
+                {/* Claude Sonnet */}
+                <label className="flex items-center p-3 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors border-indigo-500 bg-indigo-50">
+                  <input
+                    type="radio"
+                    name="model"
+                    value="claude-sonnet"
+                    checked={selectedModel === 'claude-sonnet'}
+                    onChange={(e) => setSelectedModel(e.target.value)}
+                    className="mr-3"
+                  />
+                  <div className="flex-1">
+                    <div className="font-semibold text-gray-800">Claude 3.5 Sonnet</div>
+                    <div className="text-xs text-gray-500">Fast, intelligent analysis</div>
+                  </div>
+                  <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full font-semibold">Active</span>
+                </label>
+                
+                {/* Claude Opus - Coming Soon */}
+                <div className="flex items-center p-3 border-2 rounded-lg opacity-50 cursor-not-allowed border-gray-200">
+                  <input
+                    type="radio"
+                    name="model"
+                    value="claude-opus"
+                    disabled
+                    className="mr-3"
+                  />
+                  <div className="flex-1">
+                    <div className="font-semibold text-gray-800">Claude 3 Opus</div>
+                    <div className="text-xs text-gray-500">Most capable model</div>
+                  </div>
+                  <span className="px-2 py-1 bg-gray-100 text-gray-500 text-xs rounded-full font-semibold">Coming Soon</span>
+                </div>
+                
+                {/* GPT-4 - Coming Soon */}
+                <div className="flex items-center p-3 border-2 rounded-lg opacity-50 cursor-not-allowed border-gray-200">
+                  <input
+                    type="radio"
+                    name="model"
+                    value="gpt-4"
+                    disabled
+                    className="mr-3"
+                  />
+                  <div className="flex-1">
+                    <div className="font-semibold text-gray-800">OpenAI GPT-4</div>
+                    <div className="text-xs text-gray-500">Advanced reasoning</div>
+                  </div>
+                  <span className="px-2 py-1 bg-gray-100 text-gray-500 text-xs rounded-full font-semibold">Coming Soon</span>
+                </div>
+                
+                {/* Gemini Pro - Coming Soon */}
+                <div className="flex items-center p-3 border-2 rounded-lg opacity-50 cursor-not-allowed border-gray-200">
+                  <input
+                    type="radio"
+                    name="model"
+                    value="gemini-pro"
+                    disabled
+                    className="mr-3"
+                  />
+                  <div className="flex-1">
+                    <div className="font-semibold text-gray-800">Gemini 1.5 Pro</div>
+                    <div className="text-xs text-gray-500">Google's latest model</div>
+                  </div>
+                  <span className="px-2 py-1 bg-gray-100 text-gray-500 text-xs rounded-full font-semibold">Coming Soon</span>
+                </div>
+              </div>
+              
+              <div className="mt-6 flex gap-3">
+                <button
+                  onClick={() => setShowSettings(false)}
+                  className="flex-1 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors font-semibold"
+                >
+                  Save Settings
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Main Input Card */}
         <div className="bg-white rounded-xl shadow-xl p-8 mb-6 border border-gray-100">
