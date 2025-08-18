@@ -303,7 +303,7 @@ const LeadershipMemoryTool = () => {
                     className="mr-3"
                   />
                   <div className="flex-1">
-                    <div className="font-semibold text-gray-800">Claude 3.5 Sonnet</div>
+                    <div className="font-semibold text-gray-800">Claude Sonnet 4</div>
                     <div className="text-xs text-gray-500">Fast, intelligent analysis</div>
                   </div>
                   <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full font-semibold">Active</span>
@@ -319,7 +319,7 @@ const LeadershipMemoryTool = () => {
                     className="mr-3"
                   />
                   <div className="flex-1">
-                    <div className="font-semibold text-gray-800">Claude 3 Opus</div>
+                    <div className="font-semibold text-gray-800">Claude Opus 4</div>
                     <div className="text-xs text-gray-500">Most capable model</div>
                   </div>
                   <span className="px-2 py-1 bg-gray-100 text-gray-500 text-xs rounded-full font-semibold">Coming Soon</span>
@@ -335,7 +335,7 @@ const LeadershipMemoryTool = () => {
                     className="mr-3"
                   />
                   <div className="flex-1">
-                    <div className="font-semibold text-gray-800">OpenAI GPT-4</div>
+                    <div className="font-semibold text-gray-800">OpenAI GPT-4o</div>
                     <div className="text-xs text-gray-500">Advanced reasoning</div>
                   </div>
                   <span className="px-2 py-1 bg-gray-100 text-gray-500 text-xs rounded-full font-semibold">Coming Soon</span>
@@ -351,7 +351,7 @@ const LeadershipMemoryTool = () => {
                     className="mr-3"
                   />
                   <div className="flex-1">
-                    <div className="font-semibold text-gray-800">Gemini 1.5 Pro</div>
+                    <div className="font-semibold text-gray-800">Gemini 2.0 Flash</div>
                     <div className="text-xs text-gray-500">Google's latest model</div>
                   </div>
                   <span className="px-2 py-1 bg-gray-100 text-gray-500 text-xs rounded-full font-semibold">Coming Soon</span>
