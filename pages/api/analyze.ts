@@ -25,8 +25,8 @@ export default async function handler(
 
   try {
     const message = await anthropic.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
-      max_tokens: 600,
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 800,
       messages: [
         {
           role: 'user',
@@ -37,6 +37,12 @@ You will analyze a leadership questionnaire item to predict whether respondents 
 ## Background:
 - **Episodic memory** (high remember ratio): Items that trigger recall of specific events, situations, or experiences with the leader. These items make people think of particular moments or incidents.
 - **Semantic memory** (low remember ratio): Items that trigger general impressions, overall evaluations, or trait judgments about the leader. These items make people access their general knowledge or beliefs.
+
+## What the Percentage Means:
+The percentage represents the estimated proportion of respondents who would use episodic memory (remembering specific experiences) when answering this item. For example:
+- 20% means only 20% of respondents would recall specific incidents; 80% would rely on general impressions
+- 70% means 70% of respondents would think of specific events when answering; only 30% would use general judgments
+- This is based on research where participants indicated whether they "remembered" (episodic) or "knew" (semantic) their answers
 
 ## Training Examples from Research Data:
 
