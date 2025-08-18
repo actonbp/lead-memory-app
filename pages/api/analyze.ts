@@ -64,6 +64,16 @@ Remember ratio: 0.292 (29.2% on 0-100 scale)
 Scale: Exploitative Leadership
 Why semantic: This asks for a general trait evaluation/overall impression
 
+Item: "My manager disciplines me or other employees for violation of ethical standards"
+Remember ratio: 0.321 (32.1% on 0-100 scale)
+Scale: Ethical Leadership
+Why semantic: This asks about general behavioral patterns
+
+Item: "My supervisor takes all the credit for the work we have done as a team"
+Remember ratio: 0.334 (33.4% on 0-100 scale)
+Scale: Exploitative Leadership
+Why semantic: This describes a general pattern of behavior
+
 ### STRONGLY EPISODIC ITEMS (Remember ratio > 0.60):
 These items trigger recall of specific events and experiences.
 
@@ -82,6 +92,16 @@ Remember ratio: 0.711 (71.1% on 0-100 scale)
 Scale: Servant leadership
 Why episodic: This refers to specific behaviors/events that can be recalled
 
+Item: "My manager does little things to make it pleasant to be a member of the group"
+Remember ratio: 0.660 (66.0% on 0-100 scale)
+Scale: LBDQ_XII
+Why episodic: This refers to specific actions and moments
+
+Item: "My manager often consults me on strategic decisions"
+Remember ratio: 0.587 (58.7% on 0-100 scale)
+Scale: Participative Leadership
+Why episodic: This triggers recall of specific consultation events
+
 ### MIXED ITEMS (Remember ratio 0.40-0.50):
 These items trigger both types of memory processing.
 
@@ -89,6 +109,21 @@ Item: "My manager provides inspiring strategic and organizational goals"
 Remember ratio: 0.438 (43.8% on 0-100 scale)
 Scale: Conger-Kanungo Scale of Charismatic Leadership
 Why mixed: This could trigger either specific memories or general impressions
+
+Item: "My supervisor gives me boring routine tasks when he or she can benefit from it"
+Remember ratio: 0.439 (43.9% on 0-100 scale)
+Scale: Exploitative Leadership
+Why mixed: Could trigger specific instances or general pattern
+
+Item: "My manager is friendly and approachable"
+Remember ratio: 0.524 (52.4% on 0-100 scale)
+Scale: LBDQ_XII
+Why mixed: Balances trait judgment with specific interactions
+
+Item: "My supervisor criticizes me in front of other people"
+Remember ratio: 0.476 (47.6% on 0-100 scale)
+Scale: Abusive Supervision
+Why mixed: Could recall specific incidents or general pattern
 
 ## Key Patterns to Look For:
 
@@ -109,11 +144,24 @@ Why mixed: This could trigger either specific memories or general impressions
    - LMX and Exploitative items tend to be more semantic (mean ~38%)
    - Servant and Ethical leadership items are mixed (mean ~47%)
 
+## CRITICAL INSTRUCTIONS FOR REALISTIC PREDICTIONS:
+
+**IMPORTANT**: Your percentage predictions must be REALISTIC and PRECISE, matching the granularity seen in actual research data. DO NOT give round numbers like 25, 50, or 75.
+
+Examples of GOOD predictions: 26.2%, 33.4%, 43.8%, 52.4%, 58.7%, 66.0%, 71.1%
+Examples of BAD predictions: 25%, 50%, 75%, 20%, 30%, 60%, 70%
+
+Base your prediction on:
+1. Compare the item closely to the training examples above
+2. Consider the specific wording and linguistic patterns
+3. Think about the likely distribution - most items fall between 25-75%
+4. Provide a decimal percentage (e.g., 43.8%, not 44%)
+
 ## Your Task:
 
 Analyze this leadership questionnaire item in two ways:
 
-1. Memory Type: Rate from 0-100 where:
+1. Memory Type: Provide a PRECISE percentage (with decimal, e.g., 43.8) from 0-100 where:
    - 0-35: Strongly semantic (general impressions)
    - 35-45: Somewhat semantic
    - 45-55: Mixed
@@ -136,8 +184,8 @@ Analyze this leadership questionnaire item in two ways:
 
 Item to analyze: "${inputItem}"
 
-Return ONLY this JSON structure:
-{"percentage":20,"classification":"Judgment-based","explanation":"Brief explanation","improvements":["suggestion 1","suggestion 2","suggestion 3"],"rewrittenExample":"Improved version","leadershipConstruct":"Transformational","constructConfidence":"High","constructExplanation":"This item measures inspirational motivation, a key component of transformational leadership"}`
+Return ONLY this JSON structure (NOTE: percentage MUST be a precise decimal like 43.8, not a round number):
+{"percentage":43.8,"classification":"Mixed","explanation":"Brief explanation","improvements":["suggestion 1","suggestion 2","suggestion 3"],"rewrittenExample":"Improved version","leadershipConstruct":"Transformational","constructConfidence":"High","constructExplanation":"This item measures inspirational motivation, a key component of transformational leadership"}`
         }
       ]
     });
@@ -154,8 +202,8 @@ Return ONLY this JSON structure:
 
     const result = JSON.parse(jsonStr);
     
-    // Ensure required fields
-    result.percentage = Number(result.percentage) || 50;
+    // Ensure required fields - preserve decimal precision
+    result.percentage = Number(result.percentage) || 50.0;
     
     if (!result.classification) {
       if (result.percentage <= 30) result.classification = "Judgment-based";
