@@ -387,6 +387,32 @@
   font-size: 20px;
 }
 
+.pilotSpecs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid #485058;
+}
+
+.pilotSpecs > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 28px 28px 4px 0;
+}
+
+.pilotSpecs small {
+  color: #f0c365;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.pilotSpecs strong {
+  color: #eef1f3;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
 .pilotFigure {
   padding: 10px;
   background: #171b20;
@@ -573,6 +599,10 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .pilotSpecs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .investigationGrid article:nth-child(2) {
     border-right: 0;
   }
@@ -671,6 +701,15 @@
 
   .investigationGrid h3 {
     margin-top: 20px;
+  }
+
+  .pilotSpecs {
+    grid-template-columns: 1fr;
+  }
+
+  .pilotSpecs > div {
+    padding: 20px 0;
+    border-bottom: 1px solid #485058;
   }
 
   .pilotFigure {

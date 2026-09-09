@@ -12,45 +12,45 @@ import {
 } from 'lucide-react'
 import styles from '@/styles/Semantix.module.css'
 
-const investigations = [
+const pilotSteps = [
   {
     number: '01',
-    title: 'Recover psychological safety',
-    text: 'Develop the transcript-based protocol using natural team-interaction windows and theory-grounded behavioral anchors.',
+    title: 'Ground the constructs',
+    text: 'Synthesize leadership research and existing measures, then use SME review to refine high, neutral, and low behavioral manifestations.',
   },
   {
     number: '02',
-    title: 'Compare measurement approaches',
-    text: 'Benchmark semantic-axis scores against direct LLM ratings and other field-relevant text and embedding methods.',
+    title: 'Construct semantic axes',
+    text: 'Embed approved behavioral anchors and fix each construct’s scoring direction, midpoint, model, and projection rule before evaluation.',
   },
   {
     number: '03',
-    title: 'Test known cases',
-    text: 'Evaluate whether the method recovers preregistered high, low, and within-scenario changes in enacted team interactions.',
+    title: 'Interpret events in context',
+    text: 'Identify events in multimodal AMI recordings and use an open-weight LLM to describe what happened with timestamped evidence.',
   },
   {
     number: '04',
-    title: 'Test generalization',
-    text: 'Extend the framework to multimodal records and task cohesion in a validated team simulation.',
+    title: 'Quantify and validate',
+    text: 'Project event descriptions onto task- and relational-leadership axes and compare the results with trained PhD-student coding and direct prompting.',
   },
 ]
 
 const team = [
-  ['Bryan P. Acton, Ph.D.', 'Principal Investigator'],
-  ['Sadamori Kojaku, Ph.D.', 'Co-Principal Investigator'],
-  ['Rory Eckardt, Ph.D.', 'Co-Investigator'],
-  ['Erika Hernandez Acton, Ph.D.', 'Co-Investigator'],
-  ['Roseanne J. Foti, Ph.D.', 'Senior Consultant'],
+  ['Bryan P. Acton, Ph.D.', 'Leadership, psychometrics, and computational modeling'],
+  ['Sadamori Kojaku, Ph.D.', 'Computational social science and artificial intelligence'],
+  ['Rory Eckardt, Ph.D.', 'Team dynamics, strategy, and multilevel research'],
+  ['Erika Hernandez Acton, Ph.D.', 'Behavioral coding and organizational behavior'],
+  ['Roseanne J. Foti, Ph.D.', 'Leadership and team-process research'],
 ]
 
 export default function Semantix() {
   return (
     <>
       <Head>
-        <title>Semantix | Continuous Measurement of Team Dynamics</title>
+        <title>Semantix | Continuous Measurement of Leadership and Team Dynamics</title>
         <meta
           name="description"
-          content="A psychometrically grounded framework for continuous measurement of team constructs from multimodal behavior."
+          content="A psychometrically grounded research program for continuous measurement of leadership and team constructs from multimodal behavior."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
@@ -76,11 +76,11 @@ export default function Semantix() {
             <div className={styles.heroImage} aria-hidden="true" />
             <div className={styles.heroShade} aria-hidden="true" />
             <div className={styles.heroContent}>
-              <p className={styles.kicker}>Research prototype · Submitted ARI proposal</p>
-              <h1 id="hero-title">Continuous measurement of team dynamics.</h1>
+              <p className={styles.kicker}>Research program · Measurement + AI</p>
+              <h1 id="hero-title">Continuous measurement of leadership and team dynamics.</h1>
               <p className={styles.heroSummary}>
-                A psychometrically grounded framework that connects theory, expert judgment,
-                multimodal behavioral evidence, and semantic-axis measurement.
+                Semantix connects established theory and psychometric practice to scalable,
+                evidence-linked measurement from transcripts, audio, and video.
               </p>
               <a className={styles.heroAction} href="#framework">
                 Explore the framework
@@ -93,14 +93,15 @@ export default function Semantix() {
             <div className={styles.sectionLabel}>The measurement problem</div>
             <div className={styles.statementBody}>
               <h2 id="problem-title">
-                Team states change during interaction. Most measures capture them after the fact.
+                Leadership and team states change during interaction. Most measures capture them
+                after the fact.
               </h2>
               <p>
-                Surveys provide essential evidence about members&apos; experiences, but episodic
-                self-reports cannot show precisely when a team state changed, which behaviors
-                produced the change, or how the state unfolded across a meeting. Rich transcript,
-                audio, and video records preserve that process, yet raw behavioral signals do not
-                carry psychological meaning on their own.
+                Surveys provide essential evidence about members&apos; experiences, and manual coding
+                can connect observed behavior to theory. Yet both are difficult to apply
+                continuously and at scale. Rich transcript, audio, and video records preserve how
+                leadership and team processes unfold, but raw behavioral signals do not carry
+                psychological meaning on their own.
               </p>
             </div>
           </section>
@@ -115,7 +116,9 @@ export default function Semantix() {
                 Subject matter experts define what the construct means and review its behavioral
                 anchors. An LLM produces time-stamped, evidence-linked descriptions of bounded
                 interaction windows. A fixed semantic axis then converts those descriptions into
-                continuous indicators that can be evaluated for reliability and validity.
+                continuous indicators that can be evaluated for reliability and validity. The
+                framework can be adapted to different leadership and team constructs without
+                separating the resulting scores from the literature that gives them meaning.
               </p>
             </div>
 
@@ -181,37 +184,45 @@ export default function Semantix() {
           <section className={styles.research} id="research" aria-labelledby="research-title">
             <div className={styles.sectionIntro}>
               <div>
-                <div className={styles.sectionLabel}>Research program</div>
-                <h2 id="research-title">Four investigations, one cumulative validation strategy.</h2>
+                <div className={styles.sectionLabel}>Current proposed pilot · SUNY AI Platform</div>
+                <h2 id="research-title">Multimodal AI-based assessment of leadership.</h2>
               </div>
               <p>
-                Psychological safety is the focal validation case. The final investigation tests
-                whether the same measurement-development logic transfers to task cohesion and
-                multimodal interaction data.
+                The current pilot extends Semantix from a text-based team-state demonstration to
+                task- and relational-leadership skills in multimodal team recordings. It is a
+                focused computing study within the broader research program, independent of the
+                project&apos;s other grant proposals.
               </p>
             </div>
             <div className={styles.investigationGrid}>
-              {investigations.map((investigation) => (
-                <article key={investigation.number}>
-                  <span>{investigation.number}</span>
-                  <h3>{investigation.title}</h3>
-                  <p>{investigation.text}</p>
+              {pilotSteps.map((step) => (
+                <article key={step.number}>
+                  <span>{step.number}</span>
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
                 </article>
               ))}
+            </div>
+            <div className={styles.pilotSpecs} aria-label="SUNY AI pilot specifications">
+              <div><small>Data</small><strong>10 public AMI team samples</strong></div>
+              <div><small>Primary model</small><strong>Kimi K3 on H200 GPUs</strong></div>
+              <div><small>Fallback</small><strong>Qwen3-VL-235B on H100 GPUs</strong></div>
+              <div><small>Benchmark</small><strong>Trained PhD-student coding</strong></div>
             </div>
           </section>
 
           <section className={styles.pilot} aria-labelledby="pilot-title">
             <div className={styles.sectionIntro}>
               <div>
-                <div className={styles.sectionLabel}>Preliminary implementation</div>
+                <div className={styles.sectionLabel}>Earlier proof of concept</div>
                 <h2 id="pilot-title">A working interface for inspecting scores and evidence.</h2>
               </div>
               <p>
-                The pilot applies the semantic-axis workflow to publicly available AHRQ TeamSTEPPS
-                training clips. It displays time-varying construct scores, behavior-level patterns,
-                and the descriptions supporting each window. These results demonstrate workflow
-                feasibility; they are not presented as validation evidence.
+                A text-centered pilot applied the semantic-axis workflow to psychological safety in
+                publicly available AHRQ TeamSTEPPS training clips. It displays time-varying scores,
+                behavior-level patterns, and the descriptions supporting each window. The current
+                SUNY pilot builds on this implementation by adding leadership constructs,
+                multimodal interpretation, open-weight models, and human-coder comparison.
               </p>
             </div>
             <figure className={styles.pilotFigure}>
@@ -249,7 +260,7 @@ export default function Semantix() {
 
           <section className={styles.team} id="team" aria-labelledby="team-title">
             <div className={styles.teamLead}>
-              <div className={styles.sectionLabel}>Project team</div>
+              <div className={styles.sectionLabel}>Research collaborators</div>
               <h2 id="team-title">Behavioral science, computational methods, and team research.</h2>
               <p>
                 The interdisciplinary team brings expertise in psychometrics, leadership and team
@@ -284,8 +295,8 @@ export default function Semantix() {
         <footer className={styles.footer}>
           <span>SEMANTIX</span>
           <p>
-            Continuous AI Measurement of Team Psychological Constructs · Submitted research
-            proposal and preliminary implementation.
+            Psychometrically grounded measurement from multimodal behavior · Ongoing research
+            program and preliminary implementation.
           </p>
         </footer>
       </div>
